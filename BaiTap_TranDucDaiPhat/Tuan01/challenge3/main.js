@@ -2,8 +2,8 @@
 // Data 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123
 // Data 3: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
 
-var Dolphin_Score = [97, 112, 101];
-var Koalas_Score = [109, 95, 106];
+var Dolphin_Score = [96, 108, 89];
+var Koalas_Score = [88, 91, 110];
 
 // Tinh diem trung binh
 var average_Dolphin_Score = Dolphin_Score.reduce(function(init, current) {
