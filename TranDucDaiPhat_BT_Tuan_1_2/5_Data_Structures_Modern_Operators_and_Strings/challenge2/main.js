@@ -39,34 +39,38 @@ const game = {
     },
 };
 
-var players1 = game.players[0];
-var players2 = game.players[1];
-
-// goalkeeper - thủ môn
-var gk = players1[0];
-
-// 10 players còn lại
-var fieldPlayers1 = players1.slice(1);
-
-// tất cả 22 players
-var allPlayers = players1.concat(players2);
-
-// team 1 + 3 player dự bị
-var players1Final = players1.slice(0);
-players1Final.push('Thiago', 'Coutinho', 'Perisic');
-
-// tỉ lệ cược
-// team 1 thắng
+// tỉ lệ cược: team 1 thắng
 var oddTeam1 = game.odds.team1;
-// team 2 thắng
+// tỉ lệ cược: team 2 thắng
 var oddTeam2 = game.odds.team2;
-// hoà 
-var draw = game.odds.x; 
+// tỉ lệ cược: hoà 
+var draw = game.odds.x;
 
-// ==============================
+// in ra màn hình những cầu thủ ghi bàn
 game.scored.forEach(
     (player, index) => console.log(`Goal ${index+1}: ${player}`)
 );
 
+// in ra tỉ lệ cược trung bình
 console.log('Tỷ lệ cược trung bình: ' + ((oddTeam1+oddTeam2+draw)/3).toFixed(2));
 
+// in ra tỉ lệ cược
+for (let odd in game.odds) {
+    if (odd == 'x') {
+        console.log("Odd of draw:", game.odds.x);
+    } else {
+        console.log(`Odd of victory ${game[odd]}: ${game.odds[odd]}`);
+    }
+}
+
+// tạo {} gồm các cầu thủ ghi bàn
+const scorers = {}
+
+for (let scorer of game.scored) {
+    if (!scorers[scorer]) {
+        scorers[scorer] = 1;
+    } else {
+        scorers[scorer] = scorers[scorer]+1;
+    }
+}
+console.log(scorers);
